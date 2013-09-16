@@ -101,7 +101,7 @@ gfv.cpredict<- goof(soil_v,soil_v.cubist_predict,xlab="Observed", ylab="Predicte
 plot(soil_c.cubist_model$usage[,3], soil_c.cubist_model$usage[,2], type="h", col="plum", xlab="wavelength (nm)", ylab="Percent model usage")# see which variables are important
 lines(soil_c.cubist_model$usage[,3], soil_c.cubist_model$usage[,1], type="h", col="blue")# see which variables are important
 par(new=T)   
-plot(wavelength10, spec_c[1,],axes=F,  
+plot(wavelength10, spec_c[13,],axes=F,  
      ylim=c(-2,2), xlab="", ylab="", 
      type="l", main="",xlim=c(500,2450))
 

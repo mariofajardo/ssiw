@@ -5,9 +5,11 @@ library(signal)
 library(Cubist)
 library(pls)
 library(spectroscopy)
+#load('correct_steps.RData')
+
 
 # Set the WORKING DIRECTORY
-setwd("data/")
+#setwd("data/")
 
 # import the data in csv format
 soil_data<-read.csv('soil_data.txt')
@@ -18,11 +20,14 @@ soil_data <-  soil_data[order(soil_data[,1]) , ]
 nc<-ncol(spectra)
 spectra <-spectra[, 2:nc]
 
+
 wavelength<-seq(350,2500,by =1) # The entire range spectrum wavelengths and resolution
 
-spectra<-log(1/spectra)# convert reflectance to absorbance
+cont_spectra<-log(1/spectra)# convert reflectance to absorbance
 
-spec_filtered<-filter_sg(spectra, n = 11, p = 2, m = 0)# smooth the spectra
+#cont_spectra <-correct_step(cont_spectra)
+
+spec_filtered<-filter_sg(cont_spectra, n = 11, p = 2, m = 0)# smooth the spectra
 
 # trim spectra
 spec_trim10<-strip_spectra(spec_filtered, wavelength,
